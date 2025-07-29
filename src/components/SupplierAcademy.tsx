@@ -127,10 +127,6 @@ const SupplierAcademy = () => {
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 Browse Content
               </Button>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                <Play className="w-4 h-4 mr-2" />
-                Watch Introduction
-              </Button>
             </div>
           </div>
         </section>
