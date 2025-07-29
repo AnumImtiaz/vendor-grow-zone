@@ -9,7 +9,6 @@ interface ContentItem {
   youtube_url?: string;
   duration?: string;
   is_featured?: boolean;
-  is_new?: boolean;
 }
 
 interface Category {
@@ -18,7 +17,7 @@ interface Category {
   count: number;
 }
 
-const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID'; // Replace with your actual sheet ID
+const SHEET_ID = '15xiogkUJIoH63DD5csHaCi4EQ9oX19LaguFCSnxlFNA';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 
 export const useContentData = () => {
@@ -46,7 +45,7 @@ export const useContentData = () => {
       
       headers.forEach((header, i) => {
         const value = values[i] || '';
-        if (header === 'is_featured' || header === 'is_new') {
+        if (header === 'is_featured') {
           item[header] = value.toLowerCase() === 'true';
         } else {
           item[header] = value;
@@ -73,11 +72,6 @@ export const useContentData = () => {
   };
 
   const fetchContent = async () => {
-    if (!SHEET_ID || SHEET_ID === 'YOUR_GOOGLE_SHEET_ID') {
-      setError('Please configure your Google Sheet ID in useContentData.ts');
-      setLoading(false);
-      return;
-    }
 
     try {
       setLoading(true);

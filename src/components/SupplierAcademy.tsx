@@ -15,7 +15,6 @@ interface ContentItem {
   description: string;
   youtube_url?: string;
   duration?: string;
-  is_new?: boolean;
 }
 
 const SupplierAcademy = () => {
@@ -183,10 +182,7 @@ const SupplierAcademy = () => {
                       {item.type === 'video' && <Play className="w-6 h-6 text-primary" />}
                       {item.type === 'document' && <FileText className="w-6 h-6 text-primary" />}
                     </div>
-                    <div className="flex gap-2">
-                      {item.is_new && <Badge className="bg-primary text-primary-foreground border-0">New</Badge>}
-                      <Badge variant="outline" className="capitalize border-primary/20 text-primary">{item.category}</Badge>
-                    </div>
+                    <Badge variant="outline" className="capitalize border-primary/20 text-primary">{item.category}</Badge>
                   </div>
                   <h3 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
