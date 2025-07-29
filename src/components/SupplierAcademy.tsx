@@ -121,7 +121,7 @@ const SupplierAcademy = () => {
           <div className="bg-background border border-border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4 text-foreground">Welcome to Markaz Supplier Academy</h2>
             <p className="text-lg mb-6 text-muted-foreground">
-              Ab har supplier banega khud mukhtar! Access our comprehensive educational content designed to help you master ads, listings, onboarding, and business growth on the Markaz platform.
+              Jahan aap banein apne business ke real hero, aur har maslay ka hal ho aapke paas – bina kisi intezar ke!
             </p>
             <div className="flex gap-4">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
