@@ -26,7 +26,13 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))',
+					dark: 'hsl(var(--primary-dark))'
+				},
+				academy: {
+					gradient: 'var(--academy-gradient)',
+					'gradient-soft': 'var(--academy-gradient-soft)'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
