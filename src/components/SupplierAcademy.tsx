@@ -81,18 +81,19 @@ const SupplierAcademy = () => {
   const featuredContent = getFeaturedContent();
 
   return (
-    <div className="bg-background">
+    <div className="bg-background min-h-screen">
       {/* Header */}
-      <header className="bg-white border-b p-4">
+      <header className="bg-background border-b border-border p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Menu className="w-6 h-6 text-muted-foreground" />
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-light flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
                 <img src="/lovable-uploads/ae12245a-263e-4f55-b3ee-c8d6dd8af564.png" alt="Markaz Logo" className="w-8 h-8" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Supplier Academy</h1>
+                <p className="text-sm text-primary font-medium">Ab har supplier banega khud mukhtar!</p>
               </div>
             </div>
           </div>
@@ -104,10 +105,10 @@ const SupplierAcademy = () => {
                 placeholder="Search resources..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 w-80"
+                className="pl-10 w-80 border-border"
               />
             </div>
-            <Button onClick={handleRefresh} variant="outline" size="sm">
+            <Button onClick={handleRefresh} variant="outline" size="sm" className="border-border">
               <RefreshCw className="w-4 h-4" />
             </Button>
           </div>
@@ -117,14 +118,20 @@ const SupplierAcademy = () => {
       <div className="p-6">
         {/* Welcome Section */}
         <section className="mb-8">
-          <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-8 text-white">
-            <h2 className="text-3xl font-bold mb-4">Welcome to Markaz Supplier Academy</h2>
-            <p className="text-lg mb-6 opacity-90">
-              Jahan aap banein apne business ke real hero, aur har maslay ka hal ho aapke paas – bina kisi intezar ke!
+          <div className="bg-background border border-border rounded-2xl p-8">
+            <h2 className="text-3xl font-bold mb-4 text-foreground">Welcome to Markaz Supplier Academy</h2>
+            <p className="text-lg mb-6 text-muted-foreground">
+              Ab har supplier banega khud mukhtar! Access our comprehensive educational content designed to help you master ads, listings, onboarding, and business growth on the Markaz platform.
             </p>
-            <Button variant="secondary" size="lg">
-              Browse Content
-            </Button>
+            <div className="flex gap-4">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                Browse Content
+              </Button>
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                <Play className="w-4 h-4 mr-2" />
+                Watch Introduction
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -133,7 +140,7 @@ const SupplierAcademy = () => {
           <h2 className="text-2xl font-bold mb-6 text-foreground">Browse by Category</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.slice(1).map((category) => (
-              <Card key={category.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border-0 shadow-sm">
+              <Card key={category.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-4 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
@@ -175,7 +182,7 @@ const SupplierAcademy = () => {
           <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredContent.map((item) => (
-              <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border-0 shadow-sm" onClick={() => handleContentClick(item)}>
+              <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background" onClick={() => handleContentClick(item)}>
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 bg-primary/10 rounded-lg">
