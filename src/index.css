@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 20% 15%;
 
-    --primary: 150 85% 38%;
+    --primary: 158 64% 52%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 150 75% 55%;
-    --primary-dark: 150 90% 28%;
+    --primary-light: 158 64% 62%;
+    --primary-dark: 158 70% 42%;
 
     --academy-gradient: linear-gradient(135deg, hsl(180 85% 45%), hsl(150 85% 38%), hsl(120 85% 42%));
     --academy-gradient-soft: linear-gradient(135deg, hsl(150 85% 38% / 0.1), hsl(120 85% 42% / 0.1));

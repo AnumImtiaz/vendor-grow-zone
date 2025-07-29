@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Play, FileText, Bell, ChevronRight, Home } from "lucide-react";
+import { Search, Play, FileText, Users, ChevronRight, AlertTriangle, Package, Bell, Menu, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -68,8 +68,36 @@ const SupplierAcademy = () => {
   );
 
   return (
-    <div className="bg-background p-6">
-      <div className="mb-8">
+    <div className="bg-background">
+      {/* Header */}
+      <header className="bg-white border-b p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Menu className="w-6 h-6 text-muted-foreground" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-foreground">Supplier Academy</h1>
+                <p className="text-sm text-primary">Ab har supplier banega khud mukhtar!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Input
+              placeholder="Search resources..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 w-80"
+            />
+          </div>
+        </div>
+      </header>
+
+      <div className="p-6">
         {/* Welcome Section */}
         <section className="mb-8">
           <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-8 text-white">
@@ -90,22 +118,25 @@ const SupplierAcademy = () => {
           <h2 className="text-2xl font-bold mb-6 text-foreground">Browse by Category</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.slice(1).map((category) => (
-              <Card key={category.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200">
+              <Card key={category.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border-0 shadow-sm">
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                      {category.id === 'ads' && <Play className="w-6 h-6 text-primary" />}
-                      {category.id === 'listings' && <FileText className="w-6 h-6 text-primary" />}
-                      {category.id === 'onboarding' && <Home className="w-6 h-6 text-primary" />}
-                      {category.id === 'growth' && <ChevronRight className="w-6 h-6 text-primary" />}
-                      {category.id === 'disputes' && <Bell className="w-6 h-6 text-primary" />}
-                      {category.id === 'packaging' && <FileText className="w-6 h-6 text-primary" />}
-                      {category.id === 'updates' && <Bell className="w-6 h-6 text-primary" />}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="p-4 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                      {category.id === 'ads' && <Play className="w-8 h-8 text-primary" />}
+                      {category.id === 'listings' && <FileText className="w-8 h-8 text-primary" />}
+                      {category.id === 'onboarding' && <Home className="w-8 h-8 text-primary" />}
+                      {category.id === 'growth' && <Users className="w-8 h-8 text-primary" />}
+                      {category.id === 'disputes' && <AlertTriangle className="w-8 h-8 text-primary" />}
+                      {category.id === 'packaging' && <Package className="w-8 h-8 text-primary" />}
+                      {category.id === 'updates' && <Bell className="w-8 h-8 text-primary" />}
                     </div>
-                    <Badge variant="secondary">{category.count} items</Badge>
+                    <Badge variant="secondary" className="text-primary bg-primary/10 border-0">
+                      {category.count} items
+                    </Badge>
                   </div>
-                  <h3 className="font-semibold text-lg mb-2 text-foreground">{category.name}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  
+                  <h3 className="font-bold text-xl mb-3 text-foreground">{category.name}</h3>
+                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                     {category.id === 'ads' && "Learn how to create effective ads and marketing strategies."}
                     {category.id === 'listings' && "Master product listing optimization and visibility techniques."}
                     {category.id === 'onboarding' && "Get started with step-by-step onboarding guides."}
@@ -114,8 +145,9 @@ const SupplierAcademy = () => {
                     {category.id === 'packaging' && "Learn packaging standards and guidelines."}
                     {category.id === 'updates' && "Stay updated with latest policies and changes."}
                   </p>
-                  <div className="flex items-center text-primary font-medium text-sm">
-                    Explore <ChevronRight className="w-4 h-4 ml-1" />
+                  
+                  <div className="flex items-center text-primary font-semibold text-sm group-hover:gap-2 transition-all">
+                    Explore <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Card>
@@ -128,7 +160,7 @@ const SupplierAcademy = () => {
           <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredContent.map((item) => (
-              <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200">
+              <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border-0 shadow-sm">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 bg-primary/10 rounded-lg">
@@ -136,8 +168,8 @@ const SupplierAcademy = () => {
                       {item.type === 'document' && <FileText className="w-6 h-6 text-primary" />}
                     </div>
                     <div className="flex gap-2">
-                      {item.isNew && <Badge className="bg-primary text-primary-foreground">New</Badge>}
-                      <Badge variant="outline" className="capitalize">{item.category}</Badge>
+                      {item.isNew && <Badge className="bg-primary text-primary-foreground border-0">New</Badge>}
+                      <Badge variant="outline" className="capitalize border-primary/20 text-primary">{item.category}</Badge>
                     </div>
                   </div>
                   <h3 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h3>
