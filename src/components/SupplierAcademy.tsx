@@ -75,8 +75,8 @@ const SupplierAcademy = () => {
           <div className="flex items-center gap-4">
             <Menu className="w-6 h-6 text-muted-foreground" />
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-light flex items-center justify-center overflow-hidden">
+                <img src="/lovable-uploads/ae12245a-263e-4f55-b3ee-c8d6dd8af564.png" alt="Markaz Logo" className="w-8 h-8" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Supplier Academy</h1>
