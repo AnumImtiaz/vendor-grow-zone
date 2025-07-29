@@ -80,7 +80,6 @@ const SupplierAcademy = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Supplier Academy</h1>
-                <p className="text-sm text-primary">Ab har supplier banega khud mukhtar!</p>
               </div>
             </div>
           </div>
@@ -103,9 +102,7 @@ const SupplierAcademy = () => {
           <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-4">Welcome to Markaz Supplier Academy</h2>
             <p className="text-lg mb-6 opacity-90">
-              Ab har supplier banega khud mukhtar! Access our comprehensive educational 
-              content designed to help you master ads, listings, onboarding, and business 
-              growth on the Markaz platform.
+              Jahan aap banein apne business ke real hero, aur har maslay ka hal ho aapke paas – bina kisi intezar ke!
             </p>
             <Button variant="secondary" size="lg">
               Browse Content
