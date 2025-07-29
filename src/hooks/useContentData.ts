@@ -37,7 +37,7 @@ export const useContentData = () => {
 
   const parseCSV = (csv: string): ContentItem[] => {
     const lines = csv.split('\n');
-    const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
+    const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim().toLowerCase());
     
     return lines.slice(1).map((line, index) => {
       const values = line.split(',').map(v => v.replace(/"/g, '').trim());
@@ -45,11 +45,30 @@ export const useContentData = () => {
       
       headers.forEach((header, i) => {
         const value = values[i] || '';
-        if (header === 'is_featured') {
-          item[header] = value.toLowerCase() === 'true';
-        } else {
-          item[header] = value;
+        // Map sheet headers to expected field names
+        if (header === 'title') item.title = value;
+        else if (header === 'type') item.type = value.toLowerCase();
+        else if (header === 'description') item.description = value;
+        else if (header === 'category') {
+          // Map category values to expected format
+          const categoryMap: { [key: string]: string } = {
+            'updates/ policy': 'updates',
+            'updates/policy': 'updates',
+            'ads': 'ads',
+            'listings': 'listings', 
+            'onboarding': 'onboarding',
+            'growth': 'growth',
+            'business growth': 'growth',
+            'disputes': 'disputes',
+            'disputes/claims': 'disputes',
+            'packaging': 'packaging',
+            'packaging guidelines': 'packaging'
+          };
+          item.category = categoryMap[value.toLowerCase()] || value.toLowerCase();
         }
+        else if (header === 'url') item.youtube_url = value;
+        else if (header === 'duration') item.duration = value;
+        else if (header === 'is_featured') item.is_featured = value.toLowerCase() === 'true';
       });
       
       return item as ContentItem;
