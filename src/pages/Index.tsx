@@ -1,29 +1,13 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { BarChart3, FileText, Users, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { GraduationCap, BarChart3, FileText, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import SidebarLayout from "@/components/SidebarLayout";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-foreground">Markaz Supplier Portal</h1>
-                <p className="text-sm text-muted-foreground">Your gateway to success</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-6 py-12">
+    <SidebarLayout>
+      <div className="p-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 text-foreground">Welcome to Supplier Portal</h2>
           <p className="text-xl text-muted-foreground mb-8">Manage your business and grow with our comprehensive tools</p>
@@ -55,17 +39,12 @@ const Index = () => {
             <p className="text-muted-foreground text-sm">Manage your product catalog</p>
           </Card>
 
-          <Card className="p-6 hover:shadow-lg transition-shadow border-primary/20 bg-primary/5">
-            <div className="p-3 bg-primary/10 rounded-lg w-fit mb-4">
-              <GraduationCap className="w-6 h-6 text-primary" />
+          <Card className="p-6 hover:shadow-lg transition-shadow">
+            <div className="p-3 bg-orange-50 rounded-lg w-fit mb-4">
+              <Users className="w-6 h-6 text-orange-600" />
             </div>
-            <h3 className="font-semibold mb-2 text-primary">Supplier Academy</h3>
-            <p className="text-muted-foreground text-sm mb-4">Learn and grow your business</p>
-            <Link to="/supplier-academy">
-              <Button className="w-full bg-primary hover:bg-primary-dark">
-                Access Academy
-              </Button>
-            </Link>
+            <h3 className="font-semibold mb-2">Analytics</h3>
+            <p className="text-muted-foreground text-sm">View detailed analytics</p>
           </Card>
         </div>
 
@@ -84,7 +63,7 @@ const Index = () => {
           </Link>
         </section>
       </div>
-    </div>
+    </SidebarLayout>
   );
 };
 

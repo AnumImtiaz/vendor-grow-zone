@@ -21,12 +21,14 @@ const SupplierAcademy = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
-    { id: "all", name: "All Categories", count: 65 },
+    { id: "all", name: "All Categories", count: 85 },
     { id: "ads", name: "Ads", count: 32 },
     { id: "listings", name: "Listings", count: 28 },
     { id: "onboarding", name: "Onboarding", count: 15 },
     { id: "growth", name: "Business Growth", count: 12 },
-    { id: "optimization", name: "Optimization", count: 18 }
+    { id: "disputes", name: "Disputes/Claims", count: 8 },
+    { id: "packaging", name: "Packaging Guidelines", count: 10 },
+    { id: "updates", name: "Updates/Policies", count: 6 }
   ];
 
   const featuredContent: ContentItem[] = [
@@ -66,43 +68,8 @@ const SupplierAcademy = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">M</span>
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-foreground">Supplier Academy</h1>
-                  <p className="text-sm text-muted-foreground">Ab har supplier banega khud mukhtar!</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                <Input
-                  placeholder="Search resources..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-80"
-                />
-              </div>
-              <Button variant="outline" className="bg-primary text-primary-foreground hover:bg-primary-dark">
-                <Home className="w-4 h-4 mr-2" />
-                Back to Main Portal
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-6 py-8">
+    <div className="bg-background p-6">
+      <div className="mb-8">
         {/* Welcome Section */}
         <section className="mb-8">
           <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-8 text-white">
@@ -112,39 +79,11 @@ const SupplierAcademy = () => {
               content designed to help you master ads, listings, onboarding, and business 
               growth on the Markaz platform.
             </p>
-            <div className="flex gap-4">
-              <Button variant="secondary" size="lg">
-                Browse Content
-              </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                <Play className="w-4 h-4 mr-2" />
-                Watch Introduction
-              </Button>
-            </div>
+            <Button variant="secondary" size="lg">
+              Browse Content
+            </Button>
           </div>
         </section>
-
-        {/* Latest Update Banner */}
-        {bannerUpdate.isNew && (
-          <section className="mb-8">
-            <Card className="border-primary/20 bg-primary/5">
-              <div className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Bell className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-2">{bannerUpdate.title}</h3>
-                    <p className="text-muted-foreground">{bannerUpdate.message}</p>
-                  </div>
-                  {bannerUpdate.isNew && (
-                    <Badge className="bg-primary text-primary-foreground">New</Badge>
-                  )}
-                </div>
-              </div>
-            </Card>
-          </section>
-        )}
 
         {/* Browse by Category */}
         <section className="mb-8">
@@ -159,7 +98,9 @@ const SupplierAcademy = () => {
                       {category.id === 'listings' && <FileText className="w-6 h-6 text-primary" />}
                       {category.id === 'onboarding' && <Home className="w-6 h-6 text-primary" />}
                       {category.id === 'growth' && <ChevronRight className="w-6 h-6 text-primary" />}
-                      {category.id === 'optimization' && <Search className="w-6 h-6 text-primary" />}
+                      {category.id === 'disputes' && <Bell className="w-6 h-6 text-primary" />}
+                      {category.id === 'packaging' && <FileText className="w-6 h-6 text-primary" />}
+                      {category.id === 'updates' && <Bell className="w-6 h-6 text-primary" />}
                     </div>
                     <Badge variant="secondary">{category.count} items</Badge>
                   </div>
@@ -169,7 +110,9 @@ const SupplierAcademy = () => {
                     {category.id === 'listings' && "Master product listing optimization and visibility techniques."}
                     {category.id === 'onboarding' && "Get started with step-by-step onboarding guides."}
                     {category.id === 'growth' && "Strategies to grow your business on the platform."}
-                    {category.id === 'optimization' && "Optimize your presence for better performance."}
+                    {category.id === 'disputes' && "Handle disputes and claims effectively."}
+                    {category.id === 'packaging' && "Learn packaging standards and guidelines."}
+                    {category.id === 'updates' && "Stay updated with latest policies and changes."}
                   </p>
                   <div className="flex items-center text-primary font-medium text-sm">
                     Explore <ChevronRight className="w-4 h-4 ml-1" />
