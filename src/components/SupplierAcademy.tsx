@@ -136,7 +136,11 @@ const SupplierAcademy = () => {
           <h2 className="text-2xl font-bold mb-6 text-foreground">Browse by Category</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.slice(1).map((category) => (
-              <Card key={category.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background">
+              <Card 
+                key={category.id} 
+                className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background"
+                onClick={() => setSelectedCategory(category.id)}
+              >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-4 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
@@ -175,9 +179,58 @@ const SupplierAcademy = () => {
           </div>
         </section>
 
+        {/* Category Content */}
+        {selectedCategory !== "all" && (
+          <section className="mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-foreground">
+                {categories.find(cat => cat.id === selectedCategory)?.name} Content
+              </h2>
+              <Button 
+                variant="outline" 
+                onClick={() => setSelectedCategory("all")}
+                className="border-border"
+              >
+                Back to All Categories
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {getContentByCategory(selectedCategory).map((item) => (
+                <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background" onClick={() => handleContentClick(item)}>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        {item.type === 'video' && <Play className="w-6 h-6 text-primary" />}
+                        {item.type === 'document' && <FileText className="w-6 h-6 text-primary" />}
+                      </div>
+                      <Badge variant="outline" className="capitalize border-primary/20 text-primary">{item.category}</Badge>
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
+                    {item.duration && (
+                      <p className="text-xs text-primary font-medium mb-4">{item.duration}</p>
+                    )}
+                    <div className="flex items-center text-primary font-medium text-sm">
+                      {item.type === 'video' ? 'Watch Now' : 'Read More'} 
+                      <ChevronRight className="w-4 h-4 ml-1" />
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+            {getContentByCategory(selectedCategory).length === 0 && (
+              <div className="text-center py-12">
+                <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-muted-foreground">No content available for this category yet.</p>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Featured Content */}
-        <section>
-          <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Content</h2>
+        {selectedCategory === "all" && (
+          <section>
+            <h2 className="text-2xl font-bold mb-6 text-foreground">Featured Content</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredContent.map((item) => (
               <Card key={item.id} className="group cursor-pointer hover:shadow-lg transition-all duration-200 border border-border bg-background" onClick={() => handleContentClick(item)}>
@@ -202,7 +255,8 @@ const SupplierAcademy = () => {
               </Card>
             ))}
           </div>
-        </section>
+          </section>
+        )}
       </div>
     </div>
   );
