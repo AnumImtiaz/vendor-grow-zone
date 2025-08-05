@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Play, FileText, Users, ChevronRight, AlertTriangle, Package, Bell, Menu, Home, RefreshCw } from "lucide-react";
+import { Search, Play, FileText, Users, ChevronRight, AlertTriangle, Package, Bell, Menu, Home, RefreshCw, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -146,6 +146,7 @@ const SupplierAcademy = () => {
                       {category.id === 'growth' && <Users className="w-8 h-8 text-primary" />}
                       {category.id === 'disputes' && <AlertTriangle className="w-8 h-8 text-primary" />}
                       {category.id === 'packaging' && <Package className="w-8 h-8 text-primary" />}
+                      {category.id === 'orders' && <ShoppingCart className="w-8 h-8 text-primary" />}
                       {category.id === 'updates' && <Bell className="w-8 h-8 text-primary" />}
                     </div>
                     <Badge variant="secondary" className="text-primary bg-primary/10 border-0">
@@ -161,6 +162,7 @@ const SupplierAcademy = () => {
                     {category.id === 'growth' && "Strategies to grow your business on the platform."}
                     {category.id === 'disputes' && "Handle disputes and claims effectively."}
                     {category.id === 'packaging' && "Learn packaging standards and guidelines."}
+                    {category.id === 'orders' && "Order processing guidelines and best practices."}
                     {category.id === 'updates' && "Stay updated with latest policies and changes."}
                   </p>
                   
