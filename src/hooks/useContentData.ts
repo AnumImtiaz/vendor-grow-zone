@@ -30,6 +30,7 @@ export const useContentData = () => {
     { id: "growth", name: "Business Growth", count: 0 },
     { id: "disputes", name: "Disputes/Claims", count: 0 },
     { id: "packaging", name: "Packaging Guidelines", count: 0 },
+    { id: "orders", name: "Order Guidelines", count: 0 },
     { id: "updates", name: "Updates/Policies", count: 0 }
   ]);
   const [loading, setLoading] = useState(true);
@@ -62,7 +63,9 @@ export const useContentData = () => {
             'disputes': 'disputes',
             'disputes/claims': 'disputes',
             'packaging': 'packaging',
-            'packaging guidelines': 'packaging'
+            'packaging guidelines': 'packaging',
+            'orders': 'orders',
+            'order guidelines': 'orders'
           };
           item.category = categoryMap[value.toLowerCase()] || value.toLowerCase();
         }
